@@ -29,7 +29,7 @@ SSH_Port1='22'
 SSH_Port2='225'
 
 # Your SSH Banner
-SSH_Banner='https://pastebin.com/raw/CnKVT3de'
+SSH_Banner='https://pastebin.com/raw/Qyc9PL8P'
 
 # Dropbear Ports
 Dropbear_Port1='900'
