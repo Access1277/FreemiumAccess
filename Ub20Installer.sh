@@ -29,7 +29,7 @@ SSH_Port1='22'
 SSH_Port2='225'
 
 # Your SSH Banner
-SSH_Banner='https://pastebin.com/raw/CnKVT3de'
+SSH_Banner='https://pastebin.com/raw/Qyc9PL8P'
 
 # Dropbear Ports
 Dropbear_Port1='900'
@@ -859,7 +859,7 @@ function ScriptMessage(){
  echo -e " Open release version"
  echo -e ""
  echo -e " Script created by Bonveio"
- echo -e " Edited by XAMJYSS"
+ echo -e " Edited by Lantin"
 }
 
 
@@ -969,5 +969,5 @@ fi
  # Clearing all logs from installation
  rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
 
-rm -f UbuntuXAM-Installer.sh*
+rm -f Ub20Installer.sh*
 exit 1
