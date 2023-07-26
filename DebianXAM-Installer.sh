@@ -22,7 +22,7 @@ wget -q 'https://raw.githubusercontent.com/Access1277/FreemiumAccess/main/update
 
 # Variables (Can be changed depends on your preferred values)
 # Script name
-MyScriptName='XAMJYSScript'
+MyScriptName='LantinScript'
 
 # OpenSSH Ports
 SSH_Port1='22'
