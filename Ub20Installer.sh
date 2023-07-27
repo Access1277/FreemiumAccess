@@ -32,16 +32,16 @@ SSH_Port2='225'
 SSH_Banner='https://pastebin.com/raw/Qyc9PL8P'
 
 # Dropbear Ports
-Dropbear_Port1='900'
-Dropbear_Port2='990'
+Dropbear_Port1='888'
+Dropbear_Port2='999'
 
 # Stunnel Ports
-Stunnel_Port1='143' # through Dropbear
-Stunnel_Port2='144' # through OpenSSH
+Stunnel_Port1='442' # through Dropbear
+Stunnel_Port2='443' # through OpenSSH
 
 # OpenVPN Ports
-OpenVPN_Port1='110'
-OpenVPN_Port2='69' # take note when you change this port, openvpn sun noload config will not work
+OpenVPN_Port1='1111'
+OpenVPN_Port2='1977' # take note when you change this port, openvpn sun noload config will not work
 
 # Privoxy Ports (must be 1024 or higher)
 Privoxy_Port1='6969'
@@ -252,7 +252,7 @@ function InsOpenVPN(){
 
  # Creating server.conf, ca.crt, server.crt and server.key
  cat <<'myOpenVPNconf1' > /etc/openvpn/server_tcp.conf
-# XAMScript
+# LantinScript
 
 port MyOvpnPort1
 dev tun
@@ -291,7 +291,7 @@ push "dhcp-option DNS 8.8.4.4"
 push "dhcp-option DNS 8.8.8.8"
 myOpenVPNconf1
 cat <<'myOpenVPNconf2' > /etc/openvpn/server_udp.conf
-# XAMScript
+# Lanti Script
 
 port MyOvpnPort2
 dev tun
@@ -515,8 +515,8 @@ fi
  systemctl restart openvpn@server_udp
  
  # Pulling OpenVPN no internet fixer script
- #wget -qO /etc/openvpn/openvpn.bash "https://raw.githubusercontent.com/Bonveio/BonvScripts/master/openvpn.bash"
- #0chmod +x /etc/openvpn/openvpn.bash
+ wget -qO /etc/openvpn/openvpn.bash "https://raw.githubusercontent.com/Bonveio/BonvScripts/master/openvpn.bash"
+ 0chmod +x /etc/openvpn/openvpn.bash
 }
 
 function InsProxy(){
@@ -563,7 +563,7 @@ myPrivoxy
  apt install squid -y
  
 # Squid Ports (must be 1024 or higher)
- Proxy_Port='8000'
+ Proxy_Port='8989'
  cat <<mySquid > /etc/squid/squid.conf
 acl VPN dst $(wget -4qO- http://ipinfo.io/ip)/32
 http_access allow VPN
@@ -610,7 +610,7 @@ myNginxC
 
  # Now creating all of our OpenVPN Configs 
 cat <<EOF152> /var/www/openvpn/GTMConfig.ovpn
-# Credits to XAMJYSS
+# Credits to Lantin
 
 client
 dev tun
@@ -673,7 +673,7 @@ $(cat /etc/openvpn/ca.crt)
 EOF16
 
 cat <<EOF160> /var/www/openvpn/GStories.ovpn
-# Credits to XAMJYSS
+# Credits to Lantin
 
 client
 dev tun
@@ -706,7 +706,7 @@ $(cat /etc/openvpn/ca.crt)
 EOF160
 
 cat <<EOF17> /var/www/openvpn/SunNoloadConfig.ovpn
-# Credits to XAMJYSS
+# Credits to Lantin
 
 client
 dev tun
@@ -747,7 +747,7 @@ cat <<'mySiteOvpn' > /var/www/openvpn/index.html
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- OVPN Download site by XAMJYSS -->
+<!-- OVPN Download site by Lantin -->
 
 <head><meta charset="utf-8" /><title>MyScriptName OVPN Config Download</title><meta name="description" content="MyScriptName Server" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /><meta name="theme-color" content="#000000" /><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"><link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet"></head><body><div class="container justify-content-center" style="margin-top:9em;margin-bottom:5em;"><div class="col-md"><div class="view"><img src="https://openvpn.net/wp-content/uploads/openvpn.jpg" class="card-img-top"><div class="mask rgba-white-slight"></div></div><div class="card"><div class="card-body"><h5 class="card-title">Config List</h5><br /><ul class="list-group"><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Globe/TM <span class="badge light-blue darken-4">Android/iOS</span><br /><small> For EZ/GS Promo with WNP freebies</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/GTMConfig.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Sun <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> For TU/CTC UDP Promos</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/SunConfig.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Sun <span class="badge light-blue darken-4">Android/iOS/PC/MODEM</span><br /><small> TNT GIGASTORIES</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/GStories.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li></ul></div></div></div></div></body></html>
 mySiteOvpn
