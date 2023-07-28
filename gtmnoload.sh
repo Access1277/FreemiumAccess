@@ -1,44 +1,16 @@
-#!/bin/bash
-
-## Copyright ©UDPTeam
-
-## Discord: https://discord.gg/civ3
-
-## Script to keep-alive your DNSTT server domain record query from target resolver/local dns server
-
-## Run this script excluded to your VPN tunnel (split vpn tunneling mode)
-
-## run command: ./globe-uwu1.sh l
-
-
-
-## Your DNSTT Nameserver & your Domain `A` Record
-
 NS='sdns.art1.bagito.tech'
-A='art1.bagito.tech
 
-## Repeat dig cmd loop time (seconds) (positive interger only)
+A='art1.bagito.tech'
 
-LOOP_DELAY=0
+LOOP_DELAY=5
 
-
-
-## Add your DNS here
 
 declare -a HOSTS=('112.198.115.44')
 
-
-
-## Linux' dig command executable filepath
-
-## Select value: "CUSTOM|C" or "DEFAULT|D"
-
 DIG_EXEC="DEFAULT"
 
-## if set to CUSTOM, enter your custom dig executable path here
 
 CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
-
 
 
 ######################################
@@ -96,13 +68,18 @@ check(){
   for R in "${A}" "${NS}"; do
 
    T="${HOSTS[$i]}"
-    $(timeout -k .1 .1 ${_DIG} @${T} ${R})  && M=31 || M=32;
-   echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
-   unset T R M
-  done
- done
-}
 
+     $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
+
+   echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
+
+   unset T R M
+
+  done
+
+ done
+
+}
 
 echo "DNSTT Keep-Alive script <Discord @civ3>"
 
