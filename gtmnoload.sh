@@ -4,7 +4,7 @@ NS1='sdns.jkim.bagito.tech'
 A1='jkim.bagito.tech'
 LOOP_DELAY=5
 
-declare -a HOSTS=('112.198.115.44')
+declare -a HOSTS=('112.198.115.44' '112.198.115.36')
 DIG_EXEC="DEFAULT"
 
 CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
