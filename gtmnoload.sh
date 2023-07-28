@@ -1,7 +1,7 @@
 NS='sdns.art1.bagito.tech'
-
 A='art1.bagito.tech'
-
+NS1='sdns.jkim.bagito.tech'
+A1='jkim.bagito.tech'
 LOOP_DELAY=5
 
 
@@ -65,7 +65,7 @@ check(){
 
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
 
-  for R in "${A}" "${NS}"; do
+  for R in "${NS}" "${A}" "${NS1}" "${A1}"; do
 
    T="${HOSTS[$i]}"
 
