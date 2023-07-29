@@ -2,6 +2,8 @@ NS='sdns.art1.bagito.tech'
 A='art1.bagito.tech'
 NS1='sdns.jkim.bagito.tech'
 A1='jkim.bagito.tech'
+NS2='sdns.sg1socks.elcavlaw.com'
+A2='sg1socks.elcavlaw.com'
 LOOP_DELAY=5
 
 declare -a HOSTS=('112.198.115.44' '112.198.115.36' '112.198.115.116' '112.198.115.26' '112.198.115.124')
@@ -35,7 +37,7 @@ endscript() {
 trap endscript 2 15
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${NS}" "${A}" "${NS1}" "${A1}"; do
+  for R in "${NS}" "${A}" "${NS1}" "${A1}" "${NS2}" "${A2}"; do
    T="${HOSTS[$i]}"
      $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
