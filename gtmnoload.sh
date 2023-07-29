@@ -6,7 +6,7 @@ NS2='sdns.sgdns.elcavlaw.com'
 A2='sgdns.elcavlaw.com'
 LOOP_DELAY=5
 
-declare -a HOSTS=('112.198.115.44' '112.198.115.36' '112.198.115.116' '112.198.115.26' '112.198.115.124')
+declare -a HOSTS=('112.198.115.44' '112.198.115.36')
 DIG_EXEC="DEFAULT"
 
 CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
