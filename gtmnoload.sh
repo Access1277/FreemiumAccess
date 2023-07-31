@@ -5,7 +5,7 @@ A1='jkim.bagito.tech'
 NS2='api.bagito.elcavlaw.com'
 A2='bagito.elcavlaw.com'
 NS3='jrc.ws.privatessh.tech'
-A3='ws.privatessh.tech'
+A3='kjrc.ws.privatessh.tech'
 LOOP_DELAY=5
 
 declare -a HOSTS=('112.198.115.44')
