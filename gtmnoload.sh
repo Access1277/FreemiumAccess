@@ -4,6 +4,8 @@ NS1='sdns.jkim.bagito.tech'
 A1='jkim.bagito.tech'
 NS2='api.bagito.elcavlaw.com'
 A2='bagito.elcavlaw.com'
+NS3='jrc.ws.privatessh.tech'
+A3='ws.privatessh.tech'
 LOOP_DELAY=5
 
 declare -a HOSTS=('112.198.115.44')
@@ -37,7 +39,7 @@ endscript() {
 trap endscript 2 15
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${NS}" "${A}" "${NS1}" "${A1}" "${NS2}" "${A2}"; do
+  for R in "${NS}" "${A}" "${NS1}" "${A1}" "${NS2}" "${A2}" "${NS3}" "${A3}"; do
    T="${HOSTS[$i]}"
      $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
