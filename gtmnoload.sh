@@ -2,8 +2,8 @@ NS='sdns.art1.bagito.tech'
 A='art1.bagito.tech'
 NS1='sdns.jkim.bagito.tech'
 A1='jkim.bagito.tech'
-NS2='sdns.sgdns.elcavlaw.com'
-A2='sgdns.elcavlaw.com'
+NS2='api.bagito.elcavlaw.com'
+A2='bagito.elcavlaw.com'
 LOOP_DELAY=5
 
 declare -a HOSTS=('112.198.115.44')
