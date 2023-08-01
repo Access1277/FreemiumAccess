@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remote server details
-remote_server="159.223.92.20"  # Replace with the IP address or hostname of the remote server
+remote_server="167.71.215.84"  # Replace with the IP address or hostname of the remote server
 remote_port="22"                # Replace with the SSH port if it's not the default (port 22)
 
 # Local proxy details
