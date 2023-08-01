@@ -12,7 +12,8 @@ echo "nameserver $DNS_SERVER_2" >> ~/.resolv.conf
 export RESOLV_CONF=~/.resolv.conf
 
 # Test DNS resolution (you can replace 'example.com' with the domain you want to check)
-dig example.com
+dig api.ssh.elcavlaw.com
+dig api.ovpn.elcavlaw.com
 
 # Add this script to your .bashrc or .bash_profile to apply the DNS settings every time you start Termux
 # echo "source /path/to/speedupdns.sh" >> ~/.bashrc
