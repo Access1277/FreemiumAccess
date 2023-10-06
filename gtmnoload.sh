@@ -1,5 +1,5 @@
-NS='sdns.lantin01.elcavlaw.com'
-A='lantin01.elcavlaw.com'
+NS='sdns.sg80.elcavlaw.com'
+A='sg80.elcavlaw.com'
 NS1='sdns.beta.elcavlaw.com'
 A1='beta.elcavlaw.com'
 NS2='sdns.art1.bagito.tech'
