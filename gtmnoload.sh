@@ -1,7 +1,7 @@
 NS='sdns.sg80.elcavlaw.com'
 A='sg80.elcavlaw.com'
-NS1='sdns.beta.elcavlaw.com'
-A1='beta.elcavlaw.com'
+NS1='sdns.sg77.elcavlaw.com'
+A1='sg77.elcavlaw.com'
 NS2='sdns.art1.bagito.tech'
 A2='art1.bagito.tech'
 LOOP_DELAY=5
