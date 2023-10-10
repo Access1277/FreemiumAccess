@@ -6,7 +6,7 @@ NS2='sdns.art1.bagito.tech'
 A2='art1.bagito.tech'
 LOOP_DELAY=5
 
-declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.20')
+declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.20' '112.198.126.124' '112.198.126.44' '112.198.126.116')
 DIG_EXEC="DEFAULT"
 
 CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
