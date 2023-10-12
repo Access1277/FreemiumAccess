@@ -1,5 +1,7 @@
 NS='sdns.myudp.elcavlaw.com'
 A='myudp.elcavlaw.com'
+NS1='sdns.art1.bagito.tech'
+A1='art1.bagito.tech'
 LOOP_DELAY=5
 
 declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.20')
@@ -33,7 +35,7 @@ endscript() {
 trap endscript 2 15
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${NS}" "${A}"; do
+  for R in "${NS}" "${A}" "${NS1}" "${A1}"; do
    T="${HOSTS[$i]}"
      $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
