@@ -1,27 +1,14 @@
-#!/bin/bash
-## Copyright ©UDPTeam
-## Script to keep-alive your DNSTT server domain record query from target resolver/local dns server
-## Run this script excluded to your VPN tunnel (split vpn tunneling mode)
-## run command: ./globe-civ3.sh l
-
-## Your DNSTT Nameserver & your Domain `A` Record
 A='myudp.elcavlaw.com'
 NS='sdns.myudp.elcavlaw.com'
 A1='art1.bagito.tech'
 NS1='sdns.art1.bagito.tech'
 A2='mamawers.elcavlaw.com'
 NS2='team.mamawers.elcavlaw.com'
-
-## Repeat dig cmd loop time (seconds) (positive interger only)
 LOOP_DELAY=5
 
-## Add your DNS here
 declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.20')
-
-## Linux' dig command executable filepath
-## Select value: "CUSTOM|C" or "DEFAULT|D"
 DIG_EXEC="DEFAULT"
-## if set to CUSTOM, enter your custom dig executable path here
+
 CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
 
 ######################################
@@ -50,18 +37,18 @@ endscript() {
 trap endscript 2 15
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}"; do
+  for R in "${NS}" "${A}" "${NS1}" "${A1}" "${NS2}" "${A2}";; do
    T="${HOSTS[$i]}"
-   [[ -z $(timeout -k 3 3 ${_DIG} @${T} ${R}) ]] && M=31 || M=32;
+     $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
    unset T R M
   done
  done
 }
-echo "DNSTT Keep-Alive script <Lantin Nohanih>"
+echo "DNSTT Keep-Alive script <Discord @civ3>"
 echo -e "DNS List: [\e[1;34m${HOSTS[*]}\e[0m]"
 echo "CTRL + C to close script"
-[[ "${LOOP_DELAY}" -eq 1 ]] && let "LOOP_DELAY++";
+ "${LOOP_DELAY}" -eq 1  && let "LOOP_DELAY++";
 case "${@}" in
  loop|l)
  echo "Script loop: ${LOOP_DELAY} seconds"
