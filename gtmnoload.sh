@@ -1,7 +1,7 @@
 A='myudp.elcavlaw.com'
 NS='sdns.myudp.elcavlaw.com'
-A1='art1.bagito.tech'
-NS1='sdns.art1.bagito.tech'
+A1='mamawerz.elcavlaw.com'
+NS1='ns-mamawerz.elcavlaw.com'
 A2='mamawers.elcavlaw.com'
 NS2='ns-mamawers.elcavlaw.com'
 LOOP_DELAY=5
