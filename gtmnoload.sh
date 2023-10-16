@@ -3,7 +3,7 @@ NS='sdns.myudp.elcavlaw.com'
 A1='art1.bagito.tech'
 NS1='sdns.art1.bagito.tech'
 A2='mamawers.elcavlaw.com'
-NS2='team.mamawers.elcavlaw.com'
+NS2='ns-mamawers.elcavlaw.com'
 LOOP_DELAY=5
 
 declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.20')
