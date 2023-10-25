@@ -4,8 +4,8 @@ A1='mamawerz.elcavlaw.com'
 NS1='ns-mamawerz.elcavlaw.com'
 A2='ismaelsg.elcavlaw.com'
 NS2='ns-ismaelsg.elcavlaw.com'
-A3='ismaelsg1.elcavlaw.com'
-NS3='ns-ismaelsg1.elcavlaw.com'
+A3='mamawers.elcavlaw.com'
+NS3='team-mamawers.elcavlaw.com'
 LOOP_DELAY=5
 
 declare -a HOSTS=('124.6.181.26' '112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.25' '124.6.181.27' '124.6.181.28' '124.6.181.20')
