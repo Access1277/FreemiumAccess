@@ -1,7 +1,7 @@
 NS='sdns.myudp.elcavlaw.com'
 LOOP_DELAY=5
 
-declare -a HOSTS=('112.198.115.35' '112.198.115.36' '112.198.115.37' '112.198.115.38' '112.198.115.39' '112.198.115.40' '112.198.115.41' '112.198.115.43' '112.198.115.43' '112.198.115.44')
+declare -a HOSTS=('112.198.115.44')
 DIG_EXEC="DEFAULT"
 
 CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
