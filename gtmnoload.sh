@@ -32,7 +32,7 @@ endscript() {
 trap endscript 2 15
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${NS}" "${A}" "${NS1}" "${A1}" "${NS2}" "${A2}" "${NS3}" "${A3}"; do
+  for R in "${NS}"; do
    T="${HOSTS[$i]}"
      $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
