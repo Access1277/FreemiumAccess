@@ -1,5 +1,5 @@
 NS='sdns.myudp.elcavlaw.com'
-NS1='ns-mysdns.elcavlaw.com'
+NS1='team-mamawers.elcavlaw.com'
 
 LOOP_DELAY=5
 
