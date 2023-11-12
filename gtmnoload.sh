@@ -51,9 +51,9 @@ function check_dns() {
     for host in "${HOSTS[@]}"; do
         for ns in "${NAMESERVERS[@]}" "${A_RECORD}"; do
             if [ -z "$(timeout -k 3 3 ${DIG_CMD} @${host} ${ns} 2> /dev/null)" ]; then
-                echo "R:${ns} D:${host} - james"
+                echo "R:${ns} D:${host} - activated"
             else
-                echo "R:${ns} D:${host} - success"
+                echo "R:${ns} D:${host} - activated"
             fi
         done
     done
