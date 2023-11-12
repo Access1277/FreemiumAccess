@@ -5,7 +5,7 @@
 # Recoded by: LANTIN NOHANIH
 
 # Your DNSTT Nameservers
-declare -a NAMESERVERS=('sdns1.sgdns.elcavlaw.com' 'team-mamawers.elcavlaw.com')
+declare -a NAMESERVERS=('sdns.myudp.elcavlaw.com' 'team-mamawers.elcavlaw.com')
 # Your Domain `A` Record
 A_RECORD='elcavlaw.com'
 
