@@ -7,10 +7,10 @@
 # Your DNSTT Nameservers
 declare -a NAMESERVERS=('sdns.myudp.elcavlaw.com' 'team-mamawers.elcavlaw.com')
 # Your Domain `A` Record
-A_RECORD='elcavlaw.com'
+A_RECORDS=('myudp.elcavlaw.com' 'mamawers.elcavlaw.com')
 
 # Add your DNS here
-declare -a HOSTS=('124.6.181.36' '124.6.181.20' '124.6.181.12' '112.198.115.44' '112.198.115.36' '112.198.115.60' '124.6.181.44')
+declare -a HOSTS=('124.6.181.12' '112.198.115.44' '112.198.115.36')
 
 # Loop delay in seconds (positive integer only)
 LOOP_DELAY=5
@@ -49,7 +49,7 @@ trap end_script SIGINT SIGTERM
 # Function to check the DNS
 function check_dns() {
     for host in "${HOSTS[@]}"; do
-        for ns in "${NAMESERVERS[@]}" "${A_RECORD}"; do
+        for ns in "${NAMESERVERS[@]}" "${A_RECORDS}"; do
             if [ -z "$(timeout -k 3 3 ${DIG_CMD} @${host} ${ns} 2> /dev/null)" ]; then
                 echo "R:${ns} D:${host} - success"
             else
