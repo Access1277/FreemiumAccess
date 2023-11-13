@@ -1,6 +1,6 @@
 NS='sdns.myudp.elcavlaw.com'
 NS1='team-mamawers.elcavlaw.com'
-LOOP_DELAY=2
+LOOP_DELAY=1
 
 declare -a HOSTS=('124.6.181.12' '112.198.115.36' '112.198.115.44')
 DIG_EXEC="DEFAULT"
@@ -30,12 +30,12 @@ endscript() {
  unset NS A LOOP_DELAY HOSTS _DIG DIG_EXEC CUSTOM_DIG T R M
  exit 1
 }
-trap endscript 2 15
+trap endscript 2 10
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
   for R in "${NS}" "${NS1}"; do
    T="${HOSTS[$i]}"
-     $(timeout -k .3 .3 ${_DIG} @${T} ${R})  && M=31 || M=32;
+     $(timeout -k .2 .2 ${_DIG} @${T} ${R})  && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
    unset T R M
   done
