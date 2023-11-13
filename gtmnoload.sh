@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # Improved DNSTT Keep-Alive Script
-# Copyright © DAILYFreenet
-# Recoded by: JAMES BLU
+# Copyright © ELCAVLAW
+# Recoded by: LANTIN
 
 # Your DNSTT Nameservers
 NAMESERVERS=('sdns.myudp.elcavlaw.com' 'team-mamawers.elcavlaw.com')
 # Your Domain `A` Record
 A_RECORD='myudp.elcavlaw.com'
+A_RECORD='mamawers.elcavlaw.com'
 
 # Add your DNS here
-HOSTS=('124.6.181.36' '124.6.181.20' '124.6.181.12' '112.198.115.44' '112.198.115.36' '112.198.115.60' '124.6.181.44')
+HOSTS=('124.6.181.12' '112.198.115.44' '112.198.115.36')
 
 # Loop delay in seconds (positive integer only)
 LOOP_DELAY=5
