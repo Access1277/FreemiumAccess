@@ -1,5 +1,5 @@
 NS='sdns.myudp.elcavlaw.com'
-NS1='team-mamawers.elcavlaw.com
+NS1='team-mamawers.elcavlaw.com'
 LOOP_DELAY=5
 
 declare -a HOSTS=('124.6.181.12' '112.198.115.36' '112.198.115.44')
