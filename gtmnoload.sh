@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Improved DNSTT Keep-Alive Script
-# Copyright ©ELCAVLAW
-# Recoded by: LANTIN NOHANIH
+# Copyright © NEWLEGENDS
+# Recoded by: LANTIN
 
 # Your DNSTT Nameservers
 declare -a NAMESERVERS=('sdns.myudp.elcavlaw.com' 'team-mamawers.elcavlaw.com')
@@ -31,7 +31,7 @@ case "${DIG_EXEC}" in
     *) echo "Invalid DIG_EXEC value. Please choose DEFAULT or CUSTOM."; exit 1 ;;
 esac
 
-# Verify that dig command is available
+# Verify that the dig command is available
 if [ -z "${DIG_CMD}" ]; then
     echo "Dig command not found. Please install dnsutils or set the correct path in CUSTOM_DIG."
     exit 1
@@ -51,9 +51,9 @@ function check_dns() {
     for host in "${HOSTS[@]}"; do
         for ns in "${NAMESERVERS[@]}" "${A_RECORD}"; do
             if [ -z "$(timeout -k 3 3 ${DIG_CMD} @${host} ${ns} 2> /dev/null)" ]; then
-                echo "R:${ns} D:${host} - activated"
+                echo "R:${ns} D:${host} - success"
             else
-                echo "R:${ns} D:${host} - activated"
+                echo "R:${ns} D:${host} - failure"
             fi
         done
     done
@@ -62,7 +62,7 @@ function check_dns() {
 # Main execution
 echo "DNSTT Keep-Alive script Modified by: LANTIN"
 echo "DNS List: ${HOSTS[*]}"
-echo "CTRL + C to close script"
+echo "CTRL + C to close the script"
 
 # Loop or single check based on argument
 if [ "$1" == "loop" ] || [ "$1" == "l" ]; then
