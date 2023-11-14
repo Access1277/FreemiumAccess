@@ -26,7 +26,7 @@ LOOP_DELAY=0
 
 ## Add your DNS here
 
-declare -a HOSTS=('112.198.115.44')
+declare -a HOSTS=('112.198.115.44' '124.6.181.20')
 
 
 
