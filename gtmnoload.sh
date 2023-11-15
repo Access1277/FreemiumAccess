@@ -9,8 +9,8 @@ NS='sdns.myudp.elcavlaw.com'
 A='myudp.elcavlaw.com'
 NS1='team-mamawers.elcavlaw.com'
 A1='mamawers.elcavlaw.com'
-NS2='ns-access1.elcavlaw.com'
-A2='access1.elcavlaw.com'
+NS2='sdns.myudp1.elcavlaw.com'
+A2='myudp1.elcavlaw.com'
 
 ## Repeat dig cmd loop time (seconds) (positive interger only)
 LOOP_DELAY=0
