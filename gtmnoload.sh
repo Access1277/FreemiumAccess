@@ -16,7 +16,7 @@ A2='access1.elcavlaw.com'
 LOOP_DELAY=0
 
 ## Add your DNS here
-declare -a HOSTS=('124.6.181.20')
+declare -a HOSTS=('124.6.181.20' '124.6.181.26')
 
 ## Linux' dig command executable filepath
 ## Select value: "CUSTOM|C" or "DEFAULT|D"
