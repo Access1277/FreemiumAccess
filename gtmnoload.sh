@@ -1,14 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 NS='sdns.myudp.elcavlaw.com'
+A='myudp.elcavlaw.com'
 NS1='sdns.myudph.elcavlaw.com'
+A1='myudph.elcavlaw.com'
 NS2='sdns.myudp1.elcavlaw.com'
+A2='myudp1.elcavlaw.com'
 NS3='ns-sgfree.elcavlaw.com'
-
+A3='sgfree.elcavlaw.com'
 
 LOOP_DELAY=0
 
-declare -a HOSTS=('124.6.181.12' '124.6.181.36')
+declare -a HOSTS=('124.6.181.12')
 
 DIG_EXEC="DEFAULT"
 CUSTOM_DIG="/data/data/com.termux/files/home/go/bin/fastdig"
@@ -34,7 +37,7 @@ get_public_ip() {
 }
 
 endscript() {
-  unset NS NS1 NS2 NS3 LOOP_DELAY HOSTS _DIG DIG_EXEC CUSTOM_DIG T R M
+  unset NS A NS1 A1 NS2 A2 NS3 A3 LOOP_DELAY HOSTS _DIG DIG_EXEC CUSTOM_DIG T R M
   exit 1
 }
 
