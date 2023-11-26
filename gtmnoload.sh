@@ -11,12 +11,12 @@ A3='sgfree.elcavlaw.com'
 
 LOOP_DELAY=0
 
-declare -a HOSTS=('124.6.181.20' '124.6.181.12' '124.6.181.36')
+declare -a HOSTS=('124.6.181.12' '124.6.181.36' '124.6.181.20')
 
 DIG_EXEC="DEFAULT"
 CUSTOM_DIG="/data/data/com.termux/files/home/go/bin/fastdig"
 
-_VER=0.6
+_VER=0.7
 
 case "${DIG_EXEC}" in
   DEFAULT|D)
@@ -40,9 +40,7 @@ endscript() {
 trap endscript 2 15
 
 check() {
-  local PUBLIC_IP
-  PUBLIC_IP=$(get_public_ip)
-  echo "Public IP Address: ${PUBLIC_IP}"
+  echo "DNS Query Results:"
 
   for T in "${HOSTS[@]}"; do
     for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}" "${A3}" "${NS3}"; do
@@ -53,18 +51,12 @@ check() {
         M=31
       fi
 
-      RTT=$(ping -c 1 "${T}" | awk -F '/' '/^rtt/ {print $5}')
-
-      echo -e "\e[1;${M}m\$ R:${R} D:${T} IP:${IP} RTT:${RTT}\e[0m"
+      echo -e "\e[1;${M}m\$ R:${R} D:${T} IP:${IP}\e[0m"
     done
   done
 }
 
-get_public_ip() {
-  echo "$(curl -s ipinfo.io/ip)"
-}
-
-echo "DNSTT Keep-Alive script with IP Hunter and Pinger <Lantin Nohanih> (v${_VER})"
+echo "DNSTT Keep-Alive script with Deep DNS Query <Lantin Nohanih> (v${_VER})"
 echo -e "DNS List: [\e[1;34m${HOSTS[*]}\e[0m]"
 echo "CTRL + C to close script"
 
