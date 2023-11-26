@@ -16,7 +16,7 @@ declare -a HOSTS=('124.6.181.12' '124.6.181.36')
 DIG_EXEC="DEFAULT"
 CUSTOM_DIG="/data/data/com.termux/files/home/go/bin/fastdig"
 
-_VER=0.4
+_VER=0.5
 
 case "${DIG_EXEC}" in
   DEFAULT|D)
@@ -50,19 +50,13 @@ check() {
 
   for T in "${HOSTS[@]}"; do
     for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}" "${A3}" "${NS3}"; do
-      (timeout -k 3 3 "${_DIG}" "@${T}" "${R}" &)
-    done
-  done
-
-  # Wait for all background processes to finish
-  wait
-
-  # Display results
-  for ((i = 0; i < "${#HOSTS[@]}"; i++)); do
-    for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}" "${A3}" "${NS3}"; do
-      M=32
-      wait %1 &>/dev/null || M=31
-      echo -e "\e[1;${M}m\$ R:${R} D:${HOSTS[$i]}\e[0m"
+      IP="$(timeout -k 3 3 "${_DIG}" +short "@${T}" "${R}" | tail -n 1)"
+      if [ -n "${IP}" ]; then
+        M=32
+      else
+        M=31
+      fi
+      echo -e "\e[1;${M}m\$ R:${R} D:${T} IP:${IP}\e[0m"
     done
   done
 }
