@@ -11,12 +11,12 @@ A3='sgfree.elcavlaw.com'
 
 LOOP_DELAY=0
 
-declare -a HOSTS=('124.6.181.12' '124.6.181.36')
+declare -a HOSTS=('124.6.181.20' '124.6.181.12' '124.6.181.36')
 
 DIG_EXEC="DEFAULT"
 CUSTOM_DIG="/data/data/com.termux/files/home/go/bin/fastdig"
 
-_VER=0.5
+_VER=0.6
 
 case "${DIG_EXEC}" in
   DEFAULT|D)
@@ -31,10 +31,6 @@ if ! command -v "${_DIG}" &>/dev/null; then
   echo "Error: Dig command not found. Please install dnsutils or check DIG_EXEC & CUSTOM_DIG variables."
   exit 1
 fi
-
-get_public_ip() {
-  echo "$(curl -s ipinfo.io/ip)"
-}
 
 endscript() {
   unset NS A NS1 A1 NS2 A2 NS3 A3 LOOP_DELAY HOSTS _DIG DIG_EXEC CUSTOM_DIG T R M
@@ -56,12 +52,19 @@ check() {
       else
         M=31
       fi
-      echo -e "\e[1;${M}m\$ R:${R} D:${T} IP:${IP}\e[0m"
+
+      RTT=$(ping -c 1 "${T}" | awk -F '/' '/^rtt/ {print $5}')
+
+      echo -e "\e[1;${M}m\$ R:${R} D:${T} IP:${IP} RTT:${RTT}\e[0m"
     done
   done
 }
 
-echo "DNSTT Keep-Alive script with IP Hunter <Lantin Nohanih> (v${_VER})"
+get_public_ip() {
+  echo "$(curl -s ipinfo.io/ip)"
+}
+
+echo "DNSTT Keep-Alive script with IP Hunter and Pinger <Lantin Nohanih> (v${_VER})"
 echo -e "DNS List: [\e[1;34m${HOSTS[*]}\e[0m]"
 echo "CTRL + C to close script"
 
