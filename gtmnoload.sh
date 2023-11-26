@@ -1,10 +1,5 @@
-#!/bin/bash
-## Copyright ©UDPTeam
-## Script to keep-alive your DNSTT server domain record query from target resolver/local dns server
-## Run this script excluded to your VPN tunnel (split vpn tunneling mode)
-## run command: ./globe-civ3.sh l
+#!/data/data/com.termux/files/usr/bin/bash
 
-## Your DNSTT Nameserver & your Domain `A` Record
 NS='sdns.myudp.elcavlaw.com'
 A='myudp.elcavlaw.com'
 NS1='sdns.myudph.elcavlaw.com'
@@ -14,67 +9,73 @@ A2='myudp1.elcavlaw.com'
 NS3='ns-sgfree.elcavlaw.com'
 A3='sgfree.elcavlaw.com'
 
-## Repeat dig cmd loop time (seconds) (positive interger only)
 LOOP_DELAY=0
 
-## Add your DNS here
-declare -a HOSTS=('bugg.elcavlaw.com')
+declare -a HOSTS=('124.6.181.12' '124.6.181.36')
 
-## Linux' dig command executable filepath
-## Select value: "CUSTOM|C" or "DEFAULT|D"
 DIG_EXEC="DEFAULT"
-## if set to CUSTOM, enter your custom dig executable path here
-CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
+CUSTOM_DIG="/data/data/com.termux/files/home/go/bin/fastdig"
 
-######################################
-######################################
-######################################
-######################################
-######################################
-VER=0.1
+_VER=0.3
+
 case "${DIG_EXEC}" in
- DEFAULT|D)
- _DIG="$(command -v dig)"
- ;;
- CUSTOM|C)
- _DIG="${CUSTOM_DIG}"
- ;;
+  DEFAULT|D)
+    _DIG="$(command -v dig)"
+    ;;
+  CUSTOM|C)
+    _DIG="${CUSTOM_DIG}"
+    ;;
 esac
-if [ ! $(command -v ${_DIG}) ]; then
- printf "%b" "Dig command failed to run, " \
- "please install dig(dnsutils) or check " \
- "\$DIG_EXEC & \$CUSTOM_DIG variable inside $( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/$(basename "$0") file.\n" && exit 1
+
+if ! command -v "${_DIG}" &>/dev/null; then
+  echo "Error: Dig command not found. Please install dnsutils or check DIG_EXEC & CUSTOM_DIG variables."
+  exit 1
 fi
+
+get_public_ip() {
+  echo "$(curl -s ipinfo.io/ip)"
+}
+
 endscript() {
- unset NS A  NS1 A1 NS2 A2 NS3 A3 LOOP_DELAY HOSTS _DIG DIG_EXEC CUSTOM_DIG T R M
- exit 1
+  unset NS A NS1 A1 NS2 A2 NS3 A3 LOOP_DELAY HOSTS _DIG DIG_EXEC CUSTOM_DIG T R M
+  exit 1
 }
+
 trap endscript 2 15
-check(){
- for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}" "${A3}" "${NS3}"; do
-   T="${HOSTS[$i]}"
-   [[ -z $(timeout -k 3 3 ${_DIG} @${T} ${R}) ]] && M=31 || M=32;
-   echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
-   unset T R M
+
+check() {
+  local PUBLIC_IP
+  PUBLIC_IP=$(get_public_ip)
+  echo "Public IP Address: ${PUBLIC_IP}"
+
+  for T in "${HOSTS[@]}"; do
+    for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}" "${A3}" "${NS3}"; do
+      if timeout -k 3 3 "${_DIG}" "@${T}" "${R}" &>/dev/null; then
+        M=32
+      else
+        M=31
+      fi
+      echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
+    done
   done
- done
 }
-echo "DNSTT Keep-Alive script <Lantin Nohanih>"
+
+echo "DNSTT Keep-Alive script with IP Hunter <Lantin Nohanih> (v${_VER})"
 echo -e "DNS List: [\e[1;34m${HOSTS[*]}\e[0m]"
 echo "CTRL + C to close script"
-[[ "${LOOP_DELAY}" -eq 1 ]] && let "LOOP_DELAY++";
-case "${@}" in
- loop|l)
- echo "Script loop: ${LOOP_DELAY} seconds"
- while true; do
-  check
-  echo '.--. .-.. . .- ... .     .-- .- .. -'
-  sleep ${LOOP_DELAY}
- done
- ;;
- *)
- check
- ;;
+
+case "${1:-}" in
+  loop|l)
+    echo "Script loop: ${LOOP_DELAY} seconds"
+    while true; do
+      check
+      echo '.--. .-.. . .- ... .     .-- .- .. -'
+      sleep "${LOOP_DELAY}"
+    done
+    ;;
+  *)
+    check
+    ;;
 esac
+
 exit 0
