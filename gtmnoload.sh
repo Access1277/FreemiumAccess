@@ -15,10 +15,10 @@ A2='myudp1.elcavlaw.com'
 NS3='ns-sgfree.elcavlaw.com'
 A3='sgfree.elcavlaw.com'
 ## Repeat dig cmd loop time (seconds) (positive integer only)
-LOOP_DELAY=5
+LOOP_DELAY=1
 
 ## Add your DNS here
-declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.20' '124.6.181.12' '124.6.181.36' '112.198.126.124' '112.198.126.116' '112.198.126.44')
+declare -a HOSTS=('124.6.181.12' '124.6.181.36')
 
 ## Linux' dig command executable filepath
 ## Select value: "CUSTOM|C" or "DEFAULT|D"
@@ -32,7 +32,7 @@ CUSTOM_DIG=/data/data/com.termux/files/home/go/bin/fastdig
 ######################################
 ######################################
 VER=0.2
-MAX_RETRIES=3
+MAX_RETRIES=5
 
 case "${DIG_EXEC}" in
  DEFAULT|D)
